@@ -1,0 +1,539 @@
+/* =========================================
+   Navbar.css - The Royal Header
+   ========================================= */
+
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  /* Royal Glass Effect */
+  background: rgba(10, 10, 20, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  /* Subtle Gold Border */
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo & Brand */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-left:hover {
+  transform: scale(1.02);
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  /* Gold Border */
+  padding: 2px;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
+}
+
+.nav-left:hover .logo-img {
+  transform: rotate(360deg);
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.brand-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  /* Royal Font */
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* Gold Sun Ray Hover Effect */
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-links a:hover::before {
+  width: 100%;
+}
+
+/* Theme Toggle Button (Sun/Moon Orb) */
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffd700;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.theme-btn:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transform: rotate(180deg);
+}
+
+.theme-text {
+  display: none;
+  /* Hide text, just icon */
+}
+
+.theme-icon {
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover span {
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+/* Mobile Menu Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-container {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    right: -100%;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(5, 5, 15, 0.95);
+    /* Deep Dark Overlay */
+    backdrop-filter: blur(20px);
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1000;
+    gap: 40px;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    opacity: 0;
+    color: #e0e0e0;
+    transform: translateY(20px);
+  }
+
+  /* Staggered Animation for Links */
+  .nav-links.active a {
+    animation: slideInLinks 0.5s forwards;
+  }
+
+  .nav-links.active a:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .nav-links.active a:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .nav-links.active a:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .nav-links.active a:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .nav-links.active button {
+    animation: slideInLinks 0.5s forwards 0.5s;
+    opacity: 0;
+  }
+
+  .theme-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@keyframes slideInLinks {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo & Brand */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-left:hover {
+  transform: translateY(-2px);
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Gradient */
+  padding: 2px;
+  transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: rotate(360deg);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  /* Gold Glow */
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 0.5px;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Underline */
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+  /* Gold Hover */
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.nav-links a:hover::before {
+  width: 100%;
+}
+
+.nav-links a:active {
+  transform: translateY(0);
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Button */
+  color: #4b0082;
+  /* Indigo Text for contrast */
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.theme-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.theme-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+}
+
+.theme-btn:active {
+  transform: translateY(-1px);
+}
+
+/* ... (Icon/Text unchanged) ... */
+.theme-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.theme-text {
+  z-index: 1;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  /* Gold Lines */
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.hamburger:hover span {
+  background: linear-gradient(135deg, #ff8c00, #ffd700);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-container {
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    position: fixed;
+    right: -100%;
+    top: 80px;
+    flex-direction: column;
+    background: var(--nav-bg);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 200px;
+    gap: 25px;
+  }
+
+  .nav-links.active {
+    right: 20px;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .theme-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .brand-name {
+    font-size: 1.3rem;
+  }
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 14px 15px;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .logo-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .nav-links {
+    top: 70px;
+    padding: 25px 20px;
+    min-width: 180px;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+}

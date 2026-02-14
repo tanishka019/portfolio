@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Ensure backgrounds render correctly */
+  background-color: #050510;
+  color: #e0e0e0;
+}
+
+/* --- Royal Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a15;
+  /* Dark Track */
+  border-left: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ffd700, #ff8c00);
+  /* Gold Gradient */
+  border-radius: 5px;
+  border: 2px solid #0a0a15;
+  /* Gap for floating effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ffe066, #ffa500);
+  /* Lighter Gold on Hover */
+}
+
+/* --- Royal Text Selection --- */
+::selection {
+  background: rgba(255, 215, 0, 0.9);
+  /* Gold Background */
+  color: #1a0500;
+  /* Dark Text */
+  text-shadow: none;
+}

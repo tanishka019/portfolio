@@ -1,0 +1,179 @@
+/* Theme Variables */
+.light {
+  /* Rapunzel Day - Morning Mist */
+  --bg-color: transparent;
+  --global-bg-gradient: linear-gradient(135deg, #f3e5f5 0%, #f8bbd0 50%, #fff9c4 100%);
+  /* Lavender -> Pink -> Pale Gold */
+
+  --bg-secondary: rgba(255, 255, 255, 0.65);
+  --text-color: #4b0082;
+  /* Deep Indigo */
+  --text-secondary: #8a2be2;
+
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(219, 112, 147, 0.4);
+  /* Pale Violet Red */
+  --shadow: rgba(219, 112, 147, 0.2);
+
+  --gradient-start: #ff69b4;
+  /* Hot Pink */
+  --gradient-end: #ffd700;
+  /* Gold */
+
+  /* Lanterns -> Floating Blossoms/Lights */
+  --lantern-bg: radial-gradient(circle at 50% 60%, #fff 0%, #ffd700 30%, #ff69b4 100%);
+  --lantern-border-top: 1px solid rgba(255, 105, 180, 0.3);
+  --lantern-border-bottom: 2px solid rgba(219, 112, 147, 0.2);
+  --lantern-shadow-base: 0 0 10px rgba(255, 105, 180, 0.4), 0 5px 15px rgba(219, 112, 147, 0.3);
+  --lantern-shadow-fg: 0 0 15px #ff69b4, 0 0 30px #ffd700, 0 0 60px rgba(255, 182, 193, 0.6);
+  --lantern-shadow-super-fg: 0 0 30px #ff69b4, 0 0 60px #ffd700;
+
+  /* Text Glow - Light Mode (Violet/Pink) */
+  --text-glow: 0 0 10px rgba(75, 0, 130, 0.4), 0 0 20px rgba(219, 112, 147, 0.3);
+}
+
+.dark {
+  /* Tangled Night - Pitch Black */
+  --bg-color: transparent;
+  --global-bg-gradient: radial-gradient(circle at 50% 120%, #1a0500 0%, #050100 50%, #000000 100%);
+
+  --bg-secondary: rgba(30, 0, 50, 0.6);
+  --text-color: #ffd700;
+  /* Gold */
+  --text-secondary: #e6e6fa;
+  /* Lavender */
+
+  --nav-bg: rgba(20, 0, 30, 0.85);
+  --card-bg: rgba(30, 0, 40, 0.7);
+  --border-color: rgba(255, 215, 0, 0.3);
+  --shadow: rgba(0, 0, 0, 0.7);
+
+  --gradient-start: #ff8c00;
+  --gradient-end: #ffd700;
+
+  /* Glows */
+  --text-glow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.3);
+
+  /* Floating Lanterns */
+  --lantern-bg: radial-gradient(circle at 50% 60%, #ffffcc 0%, #ffd700 40%, #ff8c00 100%);
+  --lantern-border-top: 1px solid rgba(255, 140, 0, 0.3);
+  --lantern-border-bottom: 2px solid rgba(255, 69, 0, 0.2);
+  --lantern-shadow-base: 0 0 10px rgba(255, 215, 0, 0.6), 0 5px 15px rgba(255, 140, 0, 0.4);
+  --lantern-shadow-fg: 0 0 15px #ff8c00, 0 0 30px #ffd700, 0 0 60px rgba(255, 215, 0, 0.6);
+  --lantern-shadow-super-fg: 0 0 30px #ff8c00, 0 0 60px #ffd700;
+
+  /* Text Glow - Dark Mode (Gold) */
+  --text-glow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.light,
+.dark {
+  background-color: transparent;
+  /* Must be transparent to show InteractiveBackground */
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Scroll Animation Classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Section Spacing */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+}

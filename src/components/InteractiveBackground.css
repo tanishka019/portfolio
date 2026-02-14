@@ -1,0 +1,301 @@
+/* Global Interactive Background */
+/* Tangled Night Sky Background */
+/* Tangled Night Sky Background */
+.interactive-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--global-bg-gradient);
+    /* Adapts to Light/Dark */
+    transition: background 1s ease;
+}
+
+.bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Moving Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 1;
+    /* Max Brightness */
+    box-shadow:
+        0 0 6px #fff,
+        0 0 12px #fff,
+        0 0 20px rgba(255, 255, 255, 0.8);
+    /* Intense White Glow */
+    animation: twinkle 4s infinite ease-in-out, moveStar 20s infinite linear alternate;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes moveStar {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(15px, 15px);
+    }
+
+    50% {
+        transform: translate(0, 30px);
+    }
+
+    75% {
+        transform: translate(-15px, 15px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Magic Sparkle Cursor Trail */
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    background: radial-gradient(circle, #fff 10%, #ffd700 100%);
+    /* White to Gold */
+    border-radius: 50%;
+    z-index: 1000;
+    /* High z-index but pointer-events none */
+    animation: sparkleFade 0.8s forwards;
+}
+
+@keyframes sparkleFade {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Subtle Gradient Mesh */
+.gradient-mesh-global {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background 0.4s ease;
+    pointer-events: none;
+}
+
+/* Tangled Theme: Floating Lanterns */
+.orb-global {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    /* Slightly sharper */
+    opacity: 0.4;
+    animation: floatGentle 25s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.orb-global-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(147, 112, 219, 0.3) 0%, transparent 70%);
+    /* Medium Purple */
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.orb-global-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+    /* Gold */
+    bottom: 10%;
+    right: -5%;
+    animation-delay: 8s;
+}
+
+.orb-global-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(238, 130, 238, 0.25) 0%, transparent 70%);
+    /* Violet */
+    top: 40%;
+    left: 20%;
+    animation-delay: 16s;
+}
+
+@keyframes floatGentle {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+/* Floating Lanterns System */
+.particles-global {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    pointer-events: none;
+}
+
+.particle-global {
+    position: absolute;
+    /* Lantern shape: Cylindrical with slightly curved bottom */
+    border-radius: 4px 4px 12px 12px;
+    transition: left 0.4s ease-out, top 0.4s ease-out;
+
+    /* Dynamic Theme Background */
+    background: var(--lantern-bg);
+
+    /* Dynamic Structural Rim */
+    border-top: var(--lantern-border-top);
+    border-bottom: var(--lantern-border-bottom);
+
+    /* Dynamic Glow */
+    box-shadow: var(--lantern-shadow-base);
+    transform-style: preserve-3d;
+}
+
+/* Layer: Background (Far away) */
+.lantern-bg {
+    filter: blur(4px);
+    opacity: 0.4;
+    z-index: 0;
+}
+
+/* Layer: Midground (Normal) */
+.lantern-mid {
+    filter: blur(1px);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* Layer: Foreground (Close) */
+.lantern-fg {
+    filter: blur(0);
+    opacity: 0.95;
+    z-index: 2;
+    box-shadow: var(--lantern-shadow-fg);
+}
+
+/* Layer: Super Foreground (Blurred, close to camera) */
+.lantern-super-fg {
+    filter: blur(6px);
+    /* Depth of field effect */
+    opacity: 0.9;
+    z-index: 3;
+    box-shadow: var(--lantern-shadow-super-fg);
+}
+
+@keyframes lanternFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(110vh) translateX(0) rotate(0deg) scale(var(--scale));
+    }
+
+    10% {
+        opacity: var(--opacity);
+    }
+
+    25% {
+        transform: translateY(85vh) translateX(15px) rotate(4deg) scale(var(--scale));
+    }
+
+    50% {
+        transform: translateY(60vh) translateX(-15px) rotate(-3deg) scale(var(--scale));
+    }
+
+    75% {
+        transform: translateY(35vh) translateX(10px) rotate(2deg) scale(var(--scale));
+    }
+
+    90% {
+        opacity: var(--opacity);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20vh) translateX(0) rotate(0deg) scale(var(--scale));
+    }
+}
+
+/* Subtle Cursor Trail */
+.cursor-trail-global {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100;
+    /* Lowered from 9998 to be below Navbar */
+    filter: blur(6px);
+    box-shadow: 0 0 12px currentColor;
+    transition: opacity 0.4s ease, transform 0.15s ease;
+}
+
+/* Subtle Ripple Effect */
+.ripple-global {
+    position: fixed;
+    border: 2px solid rgba(255, 75, 163, 0.3);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    animation: rippleExpandGentle 2s ease-out forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes rippleExpandGentle {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 0.6;
+    }
+
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+        border-width: 0.5px;
+    }
+}
